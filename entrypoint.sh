@@ -10,4 +10,6 @@ echo "Starting with UID : $USER_ID"
 useradd --shell /bin/bash -u $USER_ID -o -c "" -m user
 export HOME=/home/user
 
-exec /usr/sbin/gosu user novacoind
+chown user:user /home/user -R
+
+exec /usr/sbin/gosu user $@
