@@ -18,7 +18,6 @@ RUN curl https://netcologne.dl.sourceforge.net/project/novacoin/novacoin-0.5.7/d
 RUN dpkg -i /var/novacoin/downloaded/install.deb; exit 0
 RUN apt-get install -fy
 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-ENV DAEMON_CONFIG=""
-CMD novacoind ${DAEMON_CONFIG}
-
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
